@@ -1,0 +1,203 @@
+/* ---------- 1. Reset & base ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #1b5e20; /* dark green text */
+}
+
+/* ---------- 2. Overall layout ---------- */
+.app-container {
+  display: flex;             /* sidebar and main content side by side */
+  min-height: 100vh;         /* fill the screen height */
+}
+
+/* ---------- 3. Sidebar (left navigation) ---------- */
+.sidebar {
+  width: 200px;
+  background-color: #2e7d32; /* solid green */
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+  gap: 15px;
+}
+
+.nav-btn {
+  background-color: #ffffff;
+  color: #2e7d32;
+  border: 2px solid #ffffff;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-btn:hover {
+  background-color: #c8e6c9; /* light green on hover */
+}
+
+.nav-btn.active {
+  background-color: #1b5e20; /* dark green when selected */
+  color: #ffffff;
+  border-color: #1b5e20;
+}
+
+/* ---------- 4. Main content area ---------- */
+.main-content {
+  flex: 1;                /* take up remaining space */
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Hide all sections by default */
+.page-section {
+  display: none;
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Show only the active section */
+.page-section.active {
+  display: block;
+}
+
+/* ---------- 5. Calculator ---------- */
+.calculator {
+  background-color: #ffffff;
+  border: 3px solid #2e7d32;  /* green border */
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15);
+}
+
+.calc-display {
+  background-color: #f1f8e9;   /* very light green */
+  border: 2px solid #2e7d32;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 28px;
+  text-align: right;
+  min-height: 60px;
+  word-wrap: break-word;
+  margin-bottom: 15px;
+  color: #1b5e20;
+}
+
+.calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 10px;
+}
+
+.btn {
+  background-color: #ffffff;
+  border: 2px solid #2e7d32;
+  color: #2e7d32;
+  font-size: 20px;
+  padding: 15px 0;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn:hover {
+  background-color: #c8e6c9;
+}
+
+.btn:active {
+  background-color: #2e7d32;
+  color: #ffffff;
+}
+
+/* The "0" button spans two columns */
+.btn[data-value="0"] {
+  grid-column: span 2;
+}
+
+/* = button gets a solid green look */
+.btn[data-value="="] {
+  background-color: #2e7d32;
+  color: #ffffff;
+}
+
+.btn[data-value="="]:hover {
+  background-color: #1b5e20;
+}
+
+/* ---------- 6. Converter ---------- */
+.converter-box {
+  background-color: #ffffff;
+  border: 3px solid #2e7d32;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15);
+}
+
+.converter-box h2 {
+  color: #1b5e20;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.converter-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.converter-row label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.converter-row input,
+.converter-row select {
+  padding: 10px;
+  border: 2px solid #2e7d32;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #1b5e20;
+  background-color: #ffffff;
+  outline: none;
+}
+
+.converter-row input:focus,
+.converter-row select:focus {
+  border-color: #1b5e20;
+  background-color: #f1f8e9;
+}
+
+.converter-result {
+  margin-top: 20px;
+  padding: 15px;
+  border: 2px dashed #2e7d32;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 18px;
+  color: #1b5e20;
+  background-color: #f1f8e9;
+}
+
+/* ---------- 7. Responsive tweak (small screens) ---------- */
+@media (max-width: 600px) {
+  .app-container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .main-content {
+    padding: 20px;
+  }
+}
